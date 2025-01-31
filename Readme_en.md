@@ -180,7 +180,7 @@ License: [BSD 3-Clause "New" or "Revised" License](https://github.com/asweigart/
 ### 🔖 Pillow 11.1.0
 
 Homepage: https://github.com/python-pillow/Pillow  
-License: [MIT-CMUライセンス](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+License: [MIT-CMU License](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
 
 ### 🔖 langdetect 1.0.9
 
