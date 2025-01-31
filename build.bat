@@ -1,0 +1,1 @@
+pyinstaller --onefile --noconsole --add-data "./image;image" --name SAPIClip --icon image/application.ico src/application.py

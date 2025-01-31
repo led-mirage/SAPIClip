@@ -1,0 +1,14 @@
+{
+    "file_ver": 1,
+    "voice": "Auto",
+    "speed": 1.2,
+    "replacements": [],
+    "preferred_voices": {
+        "en": [
+            "Microsoft Zira Desktop"
+        ],
+        "ja": [
+            "Microsoft Haruka"
+        ]
+    }
+}
