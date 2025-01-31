@@ -19,6 +19,8 @@ Copyright (c) 2025 led-mirage
 
 ## Demo
 
+https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
+
 ## Features
 - **Automatic Clipboard Monitoring:** Automatically detects and starts reading aloud whenever new text is copied to the clipboard.
 - **Multilingual Speech Synthesis:** Utilizes SAPI5 to automatically read aloud in various languages.
