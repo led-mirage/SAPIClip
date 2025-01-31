@@ -19,6 +19,8 @@ Copyright (c) 2025 led-mirage
 
 ## デモ
 
+https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
+
 ## 機能
 
 - **自動クリップボード監視:** クリップボードに新しいテキストがコピーされると、自動で検出し読み上げを開始します。
