@@ -1,5 +1,9 @@
 # <img src="image/application.ico" width="48"> SAPIClip
 
+[![GitHub All Releases](https://img.shields.io/github/downloads/led-mirage/SAPIClip/total?color=blue)](https://github.com/led-mirage/SAPIClip/releases)
+[![GitHub release](https://img.shields.io/github/v/release/led-mirage/SAPIClip?color=blue)](https://github.com/led-mirage/SAPIClip/releases)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Copyright (c) 2025 led-mirage
 
 [English](Readme_en.md)
@@ -163,17 +167,12 @@ Windows 11で音声を追加する方法を説明します。
 
 誤認問題が解決できるのが一番いいのですが、いい方法が見つかっていないので申し訳ありませんがご了承ください。
 
-VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/9d0b58b696ce4ffe7153cd253d15fced6110a4953a365eb3971755c387df10b1)は以下の通りです（2025/01/31 v0.1.0）  
-SAPIClip.exe … 72個中6個のアンチウィルスエンジンで検出
+VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/0004994c0c593d36b6020e41f06e4aa753b486bdde95def070c1e2ab0f13cf75?nocache=1)は以下の通りです（2025/06/15 v0.1.1）  
+SAPIClip.exe … 72個中5個のアンチウィルスエンジンで検出
 
-<img src="doc/virustotal_0.1.0.png" width="600">
+<img src="doc/virustotal_0.1.1.png" width="600">
 
 ## 使用しているライブラリ
-
-### 🔖 requests 2.32.3
-
-ホームページ： https://requests.readthedocs.io/en/latest/  
-ライセンス：[Apache License 2.0](https://github.com/psf/requests/blob/main/LICENSE) 
 
 ### 🔖 pyperclip 1.9.0 
 
@@ -206,3 +205,7 @@ SAPIClip.exe … 72個中6個のアンチウィルスエンジンで検出
 ### 0.1.0 (2025/02/01)
 
 - ファーストリリース
+
+### 0.1.1 (2025/06/15)
+
+- 使用していないrequestsライブラリを削除
