@@ -11,7 +11,7 @@ import argparse
 from settings import Settings
 
 APP_NAME = "SAPIClip"
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.1.1"
 COPYRIGHT = "Copyright 2025 led-mirage"
 
 SETTING_FILE = "settings.json"

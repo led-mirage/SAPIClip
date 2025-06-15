@@ -17,7 +17,6 @@ import time
 import threading
 
 import pyperclip
-import requests
 from PIL import Image, ImageTk
 import langdetect
 
@@ -267,9 +266,6 @@ class MainWindow:
                     self.queue.put("speech finished")
                     print()
                 time.sleep(0.5)
-        except requests.exceptions.RequestException as err:
-            self.queue.put("coeiroink api error")
-            print(err)
         except Exception as err:
             self.queue.put("unexpected error")
             print(err)
