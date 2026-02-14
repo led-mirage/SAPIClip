@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/led-mirage/SAPIClip?color=blue)](https://github.com/led-mirage/SAPIClip/releases)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Copyright (c) 2025 led-mirage
+Copyright (c) 2025-2026 led-mirage
 
 [English](Readme_en.md)
 
@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 
 以下のリンクから SAPIClip.ZIP をダウンロードして、作成したフォルダに解凍してください。
 
-https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.0
+https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.2
 
 #### 3. 実行
 
@@ -167,10 +167,10 @@ Windows 11で音声を追加する方法を説明します。
 
 誤認問題が解決できるのが一番いいのですが、いい方法が見つかっていないので申し訳ありませんがご了承ください。
 
-VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/0004994c0c593d36b6020e41f06e4aa753b486bdde95def070c1e2ab0f13cf75?nocache=1)は以下の通りです（2025/06/15 v0.1.1）  
-SAPIClip.exe … 72個中5個のアンチウィルスエンジンで検出
+VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/a9484323a331fd7657e085591e0ae439898dc792e44f0867fedc6db2e798ea8d/detection)は以下の通りです（2026/02/14 v0.1.2）  
+SAPIClip.exe … 72個中3個のアンチウィルスエンジンで検出
 
-<img src="doc/virustotal_0.1.1.png" width="600">
+<img src="doc/virustotal_0.1.2.png" width="600">
 
 ## 使用しているライブラリ
 
@@ -179,7 +179,7 @@ SAPIClip.exe … 72個中5個のアンチウィルスエンジンで検出
 ホームページ： https://github.com/asweigart/pyperclip/tree/master  
 ライセンス：[BSD 3-Clause "New" or "Revised" License](https://github.com/asweigart/pyperclip/blob/master/LICENSE.txt)
 
-### 🔖 Pillow 11.1.0
+### 🔖 Pillow 12.1.1
 
 ホームページ： https://github.com/python-pillow/Pillow  
 ライセンス：[MIT-CMUライセンス](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
@@ -196,7 +196,7 @@ SAPIClip.exe … 72個中5個のアンチウィルスエンジンで検出
 
 ## ライセンス
 
-© 2025 led-mirage
+© 2025-2026 led-mirage
 
 本アプリケーションは [MITライセンス](https://opensource.org/licenses/MIT) の下で公開されています。詳細については、プロジェクトに含まれる LICENSE ファイルを参照してください。
 
@@ -209,3 +209,9 @@ SAPIClip.exe … 72個中5個のアンチウィルスエンジンで検出
 ### 0.1.1 (2025/06/15)
 
 - 使用していないrequestsライブラリを削除
+
+### 0.1.2 (2026/02/14)
+
+- 高DPIディスプレイ対応（文字がぼやけないようにする）
+- pillowのバージョンを12.1.1に更新（CVE-2026-25990対応）
+- PyInstallerのバージョンを6.14.2に更新

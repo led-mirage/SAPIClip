@@ -1,6 +1,6 @@
 # <img src="image/application.ico" width="48"> SAPIClip
 
-Copyright (c) 2025 led-mirage
+Copyright (c) 2025-2026 led-mirage
 
 [Japanese](Readme.md)
 
@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 
 ## Confirmed Working Environment
 
-- Windows 11 Pro 24H2
+- Windows 11 Pro 25H2
 - Python 3.12.0
 
 The application is expected to work on Windows 10 and Windows Home editions as well, although these environments have not been explicitly tested.
@@ -162,10 +162,10 @@ Rest assured, there are no malicious elements in this application. For those con
 
 We apologize for any inconvenience caused by these false detections and are actively seeking a solution, though we have yet to find a definitive one.
 
-The check [results](https://www.virustotal.com/gui/file/9d0b58b696ce4ffe7153cd253d15fced6110a4953a365eb3971755c387df10b1) on VirusTotal are as follows (2025/01/31 v0.1.0)  
-SAPIClip.exe ... Detected by 6 out of 72 antivirus engines
+The check [results](https://www.virustotal.com/gui/file/a9484323a331fd7657e085591e0ae439898dc792e44f0867fedc6db2e798ea8d/detection) on VirusTotal are as follows (2026/02/14 v0.1.2)  
+SAPIClip.exe ... Detected by 3 out of 72 antivirus engines
 
-<img src="doc/virustotal_0.1.0.png" width="600">
+<img src="doc/virustotal_0.1.2.png" width="600">
 
 ## Libraries Used
 
@@ -179,7 +179,7 @@ License: [Apache License 2.0](https://github.com/psf/requests/blob/main/LICENSE)
 Homepage: https://github.com/asweigart/pyperclip/tree/master  
 License: [BSD 3-Clause "New" or "Revised" License](https://github.com/asweigart/pyperclip/blob/master/LICENSE.txt)
 
-### 🔖 Pillow 11.1.0
+### 🔖 Pillow 12.1.1
 
 Homepage: https://github.com/python-pillow/Pillow  
 License: [MIT-CMU License](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
@@ -196,7 +196,7 @@ License: [PSF-2.0 license](https://spdx.org/licenses/PSF-2.0.html)
 
 ## License
 
-© 2025 led-mirage
+© 2025-2026 led-mirage
 
 This application is released under the [MIT License](https://opensource.org/licenses/MIT). For more details, please refer to the LICENSE file included in the project.
 
@@ -205,3 +205,13 @@ This application is released under the [MIT License](https://opensource.org/lice
 ### 0.1.0 (2025/02/01)
 
 - Initial release
+
+### 0.1.1 (2025/06/15)
+
+- Removed unused `requests` library
+
+### 0.1.2 (2026/02/14)
+
+- Added high-DPI display support (prevent blurry text)
+- Updated Pillow to version 12.1.1 (addresses CVE-2026-25990)
+- Updated PyInstaller to version 6.14.2
