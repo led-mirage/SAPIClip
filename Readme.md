@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 
 ## 動作確認環境
 
-- Windows 11 Pro 24H2
+- Windows 11 Pro 25H2
 - Python 3.12.0
 
 ※アプリケーションは Windows 10でも、Homeエディションでも動作すると思いますが、その環境でのテストは行っていません。
