@@ -1,4 +1,4 @@
 pyperclip==1.9.0
-pillow==11.1.0
+pillow==12.1.1
 langdetect==1.0.9
 pywin32==308
