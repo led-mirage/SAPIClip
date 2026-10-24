@@ -215,3 +215,7 @@ This application is released under the [MIT License](https://opensource.org/lice
 - Added high-DPI display support (prevent blurry text)
 - Updated Pillow to version 12.1.1 (addresses CVE-2026-25990)
 - Updated PyInstaller to version 6.14.2
+
+### 0.1.3 (2026/10/24)
+
+- Updated Pillow to version 13.0.0
