@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 
 以下のリンクから SAPIClip.ZIP をダウンロードして、作成したフォルダに解凍してください。
 
-https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.2
+https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.3
 
 #### 3. 実行
 
@@ -167,10 +167,10 @@ Windows 11で音声を追加する方法を説明します。
 
 誤認問題が解決できるのが一番いいのですが、いい方法が見つかっていないので申し訳ありませんがご了承ください。
 
-VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/a9484323a331fd7657e085591e0ae439898dc792e44f0867fedc6db2e798ea8d/detection)は以下の通りです（2026/02/14 v0.1.2）  
-SAPIClip.exe … 72個中3個のアンチウィルスエンジンで検出
+VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/4bb015acccf6d3e10b41f32b6280372b33b3790fa32bac3782064afdcc1171d9/detection)は以下の通りです（2026/10/24 v0.1.3）  
+SAPIClip.exe … 71個中3個のアンチウィルスエンジンで検出
 
-<img src="doc/virustotal_0.1.2.png" width="600">
+<img src="doc/virustotal_0.1.3.png" width="600">
 
 ## 使用しているライブラリ
 
@@ -215,3 +215,7 @@ SAPIClip.exe … 72個中3個のアンチウィルスエンジンで検出
 - 高DPIディスプレイ対応（文字がぼやけないようにする）
 - pillowのバージョンを12.1.1に更新（CVE-2026-25990対応）
 - PyInstallerのバージョンを6.14.2に更新
+
+### 0.1.3 (2026/10/24)
+
+- pillowのバージョンを13.0.0に更新
