@@ -21,9 +21,11 @@ from PIL import Image, ImageTk
 import langdetect
 
 from application import Application, APP_NAME, APP_VERSION
+from app_logging import get_logger, get_active_log_file_path
 from sapi_voice_manager import SAPIVoiceManager
 
 App = None
+logger = get_logger(__name__)
 
 class MainWindow:
     # コンストラクタ
@@ -47,8 +49,9 @@ class MainWindow:
         self.lock = threading.Lock()
 
         self.root = tk.Tk()
+        self.root.report_callback_exception = self.handle_tk_exception
         window_width = 305
-        window_height = 124
+        window_height = 135
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
         position_right = int(screen_width - window_width - 20)
@@ -69,9 +72,32 @@ class MainWindow:
         self.speaker_combo = self.create_speaker_combo()
         self.speed_label = self.create_speed_label()
         self.speed_scale = self.crate_speed_scale()
+        self.button_frame = tk.Frame(self.root)
         self.start_button = self.create_start_button()
         self.stop_button = self.create_stop_button()
         self.repeat_button = self.create_repeat_button()
+
+    # Tkinterの例外ハンドラ（メインスレッドで動作する）
+    def handle_tk_exception(self, exc_type, exc_value, tb):
+        logger.error(
+            "Unhandled Tkinter callback exception",
+            exc_info=(exc_type, exc_value, tb),
+        )
+
+        log_file_path = get_active_log_file_path()
+        if log_file_path is not None:
+            message = (
+                "An unexpected error occurred.\n"
+                f"See the log file for details:\n\n{log_file_path}"
+            )
+        else:
+            message = (
+                "An unexpected error occurred.\n"
+                "The error details could not be logged because the log file "
+                "could not be created.\n\n"
+                f"{exc_type.__name__}: {exc_value}"
+            )
+        messagebox.showerror(APP_NAME, message, parent=self.root)
 
     # 終了処理
     def terminate(self):
@@ -107,7 +133,7 @@ class MainWindow:
             options.append(f"{voice_name}")
             if voice_name == App.settings.get_voice():
                 current = idx
-        combo = ttk.Combobox(self.root, values=options, width=33, state="readonly")
+        combo = ttk.Combobox(self.root, values=options, state="readonly")
         combo.current(current)
         combo.bind("<<ComboboxSelected>>", self.speaker_changed)
         return combo
@@ -119,7 +145,7 @@ class MainWindow:
 
     # 話速スケールを作成する
     def crate_speed_scale(self):
-        scale = tk.Scale(self.root, from_=0.0, to=2.0, resolution=0.1, length=150,
+        scale = tk.Scale(self.root, from_=0.0, to=2.0, resolution=0.1,
                          orient=tk.HORIZONTAL, showvalue=False, command=self.update_speed_label)
         scale.set(App.settings.get_speed())
         scale.bind("<ButtonRelease-1>", self.speed_scale_changed)
@@ -127,29 +153,42 @@ class MainWindow:
 
     # 開始ボタンを作成する
     def create_start_button(self):
-        button = tk.Button(self.root, text="Start", image=self.icon_start, width=80, height=36,
-                           compound="left", padx=10, command=self.start_monitoring)
+        button = tk.Button(self.button_frame, text="Start", image=self.icon_start, height=36,
+                           compound="left", command=self.start_monitoring)
         return button
 
     # 停止ボタンを作成する
     def create_stop_button(self):
-        button = tk.Button(self.root, text="Stop", image=self.icon_stop, width=80, height=36,
-                           compound="left", padx=10, command=self.stop_monitoring)
+        button = tk.Button(self.button_frame, text="Stop", image=self.icon_stop, height=36,
+                           compound="left", command=self.stop_monitoring)
         return button
 
     # リピートボタンを作成する
     def create_repeat_button(self):
-        button = tk.Button(self.root, image=self.icon_repeat, width=50, height=36, padx=10, command=self.repeat_speech)
+        button = tk.Button(
+            self.button_frame,
+            image=self.icon_repeat,
+            width=50,
+            height=36,
+            command=self.repeat_speech,
+        )
         return button
 
     # ウィジェットを配置する
     def layout(self):
-        self.speaker_combo.grid(row=0, column=0, padx=5, pady=5, columnspan=8, sticky="w")
+        for column in range(8):
+            self.root.grid_columnconfigure(column, weight=1, uniform="main")
+
+        self.speaker_combo.grid(row=0, column=0, padx=5, pady=5, columnspan=8, sticky="ew")
         self.speed_label.grid(row=1, column=0, padx=5, pady=5, columnspan=2, sticky="w")
-        self.speed_scale.grid(row=1, column=2, padx=5, pady=5, columnspan=6, sticky="w")
-        self.start_button.grid(row=2, column=0, padx=5, pady=5, columnspan=3, sticky="w")
-        self.stop_button.grid(row=2, column=3, padx=5, pady=5, columnspan=3, sticky="w")
-        self.repeat_button.grid(row=2, column=6, padx=5, pady=5, columnspan=2, sticky="w")
+        self.speed_scale.grid(row=1, column=2, padx=5, pady=5, columnspan=6, sticky="ew")
+
+        self.button_frame.grid(row=2, column=0, padx=5, pady=5, columnspan=8, sticky="ew")
+        self.button_frame.grid_columnconfigure(0, weight=1, uniform="button")
+        self.button_frame.grid_columnconfigure(1, weight=1, uniform="button")
+        self.start_button.grid(row=0, column=0, padx=(0, 5), sticky="ew")
+        self.stop_button.grid(row=0, column=1, padx=5, sticky="ew")
+        self.repeat_button.grid(row=0, column=2, padx=(5, 0), sticky="ew")
         self.change_button_state()
 
     # 話者ドロップダウンリストの変更イベントハンドラ
@@ -177,7 +216,9 @@ class MainWindow:
         if not self.monitoring:
             pyperclip.copy("")
             self.stop_event.clear()
-            self.monitoring_thread = threading.Thread(target=self.monitor_clipboard)
+            self.monitoring_thread = threading.Thread(
+                target=self.monitor_clipboard,
+                name="ClipboardMonitor")
             self.monitoring_thread.start()
 
             self.monitoring = True
@@ -214,11 +255,8 @@ class MainWindow:
                 self.on_speech_finished()
             elif signal == "monitoring thread terminated":
                 self.on_monitoring_thread_terminated()
-            elif signal == "coeiroink api error":
-                message = "COEIROINK と通信できませんでした"
-                messagebox.showerror(f"{APP_NAME}", message)
             elif signal == "unexpected error":
-                message = "予期しない例外が発生しました"
+                message = "An unexpected error occurred."
                 messagebox.showerror(f"{APP_NAME}", message)
 
             self.root.after(100, self.read_monitoring_thread_message, q)
@@ -252,6 +290,8 @@ class MainWindow:
 
     # クリップボードを監視する（ワーカースレッド）    
     def monitor_clipboard(self):
+        logger.info("Clipboard monitoring started")
+
         try:
             self.set_last_speech_text("")
             while not self.stop_event.is_set():
@@ -266,9 +306,11 @@ class MainWindow:
                     self.queue.put("speech finished")
                     print()
                 time.sleep(0.5)
-        except Exception as err:
+        except Exception:
+            logger.exception("Clipboard monitoring failed")
             self.queue.put("unexpected error")
-            print(err)
+        else:
+            logger.info("Clipboard monitoring stopped normally")
         finally:
             self.queue.put("monitoring thread terminated")
     

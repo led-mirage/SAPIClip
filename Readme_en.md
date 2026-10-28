@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 ## Confirmed Working Environment
 
 - Windows 11 Pro 25H2
-- Python 3.12.0
+- Python 3.14.10
 
 The application is expected to work on Windows 10 and Windows Home editions as well, although these environments have not been explicitly tested.
 
@@ -49,7 +49,7 @@ Create a folder at a location of your choice for the project.
 
 Download the SAPIClip.ZIP from the link below and extract it to the folder you created.
 
-https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.0
+https://github.com/led-mirage/SAPIClip/releases/tag/v0.2.0
 
 #### 3. Execute
 
@@ -162,24 +162,19 @@ Rest assured, there are no malicious elements in this application. For those con
 
 We apologize for any inconvenience caused by these false detections and are actively seeking a solution, though we have yet to find a definitive one.
 
-The check [results](https://www.virustotal.com/gui/file/a9484323a331fd7657e085591e0ae439898dc792e44f0867fedc6db2e798ea8d/detection) on VirusTotal are as follows (2026/02/14 v0.1.2)  
-SAPIClip.exe ... Detected by 3 out of 72 antivirus engines
+The check [results](https://www.virustotal.com/gui/file/8fb9ba6a94e070510a5441707aa595249341a26119f2f55257ba2925c1e4d3ad/detection) on VirusTotal are as follows (2026/10/28 v0.2.0)  
+SAPIClip.exe ... Detected by 1 out of 70 antivirus engines
 
-<img src="doc/virustotal_0.1.2.png" width="600">
+<img src="doc/virustotal_0.2.0.png" width="600">
 
 ## Libraries Used
-
-### 🔖 requests 2.32.3
-
-Homepage: https://requests.readthedocs.io/en/latest/  
-License: [Apache License 2.0](https://github.com/psf/requests/blob/main/LICENSE) 
 
 ### 🔖 pyperclip 1.9.0 
 
 Homepage: https://github.com/asweigart/pyperclip/tree/master  
 License: [BSD 3-Clause "New" or "Revised" License](https://github.com/asweigart/pyperclip/blob/master/LICENSE.txt)
 
-### 🔖 Pillow 12.1.1
+### 🔖 Pillow 13.0.0
 
 Homepage: https://github.com/python-pillow/Pillow  
 License: [MIT-CMU License](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
@@ -189,7 +184,7 @@ License: [MIT-CMU License](https://github.com/python-pillow/Pillow/blob/main/LIC
 Homepage: https://github.com/Mimino666/langdetect  
 License: [Apache License 2.0](https://github.com/Mimino666/langdetect/blob/master/LICENSE)
 
-### 🔖 pywin32 308
+### 🔖 pywin32 312
 
 Homepage: https://github.com/mhammond/pywin32  
 License: [PSF-2.0 license](https://spdx.org/licenses/PSF-2.0.html)
@@ -219,3 +214,13 @@ This application is released under the [MIT License](https://opensource.org/lice
 ### 0.1.3 (2026/10/24)
 
 - Updated Pillow to version 13.0.0
+
+### 0.2.0 (2026/10/28)
+
+- Updated Python to version 3.14.10
+- Updated PyInstaller to version 6.22.3
+- Updated pywin32 to version 312
+- Added version and copyright information to the EXE properties
+- Added logging for application startup, shutdown, and exceptions
+- Added exception handling for top-level application execution, the clipboard monitoring thread, and Tkinter callbacks
+- Adjusted the layout to distribute UI components evenly across the window width
