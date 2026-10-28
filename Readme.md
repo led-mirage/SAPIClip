@@ -32,13 +32,13 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 - **音声の切り替え:** 利用可能な音声（話者）間で簡単に切り替えができ、好みの声を選択できます。
 - **言語の自動検出:** 話者を`Auto`にすることで言語の自動検出も行い、対応する音声での合成を実現します。
 - **話速設定:** 話速を調節できるので、自分の好みに合わせて音声の速さを変更可能です。
-- **シンプルなインターフェース:** GUIは直感的に操作でき、コンパクトなため邪魔になりなりません。
+- **シンプルなインターフェース:** GUIは直感的に操作でき、コンパクトなため邪魔になりません。
 - **繰り返し再生:** 最後に読み上げた内容を簡単に再生し直すことができます。
 
 ## 動作確認環境
 
 - Windows 11 Pro 25H2
-- Python 3.12.0
+- Python 3.14.10
 
 ※アプリケーションは Windows 10でも、Homeエディションでも動作すると思いますが、その環境でのテストは行っていません。
 
@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/c029f66b-f2df-4e5a-9b24-1d208fb0e03d
 
 以下のリンクから SAPIClip.ZIP をダウンロードして、作成したフォルダに解凍してください。
 
-https://github.com/led-mirage/SAPIClip/releases/tag/v0.1.3
+https://github.com/led-mirage/SAPIClip/releases/tag/v0.2.0
 
 #### 3. 実行
 
@@ -167,10 +167,10 @@ Windows 11で音声を追加する方法を説明します。
 
 誤認問題が解決できるのが一番いいのですが、いい方法が見つかっていないので申し訳ありませんがご了承ください。
 
-VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/4bb015acccf6d3e10b41f32b6280372b33b3790fa32bac3782064afdcc1171d9/detection)は以下の通りです（2026/10/24 v0.1.3）  
-SAPIClip.exe … 71個中3個のアンチウィルスエンジンで検出
+VirusTotalでの[チェック結果](https://www.virustotal.com/gui/file/8fb9ba6a94e070510a5441707aa595249341a26119f2f55257ba2925c1e4d3ad/detection)は以下の通りです（2026/10/28 v0.2.0）  
+SAPIClip.exe … 70個中1個のアンチウィルスエンジンで検出
 
-<img src="doc/virustotal_0.1.3.png" width="600">
+<img src="doc/virustotal_0.2.0.png" width="600">
 
 ## 使用しているライブラリ
 
@@ -179,7 +179,7 @@ SAPIClip.exe … 71個中3個のアンチウィルスエンジンで検出
 ホームページ： https://github.com/asweigart/pyperclip/tree/master  
 ライセンス：[BSD 3-Clause "New" or "Revised" License](https://github.com/asweigart/pyperclip/blob/master/LICENSE.txt)
 
-### 🔖 Pillow 12.1.1
+### 🔖 Pillow 13.0.0
 
 ホームページ： https://github.com/python-pillow/Pillow  
 ライセンス：[MIT-CMUライセンス](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
@@ -189,7 +189,7 @@ SAPIClip.exe … 71個中3個のアンチウィルスエンジンで検出
 ホームページ： https://github.com/Mimino666/langdetect  
 ライセンス：[Apache License 2.0](https://github.com/Mimino666/langdetect/blob/master/LICENSE)
 
-### 🔖 pywin32 308
+### 🔖 pywin32 312
 
 ホームページ： https://github.com/mhammond/pywin32  
 ライセンス：[PSF-2.0 license](https://spdx.org/licenses/PSF-2.0.html)
@@ -219,3 +219,13 @@ SAPIClip.exe … 71個中3個のアンチウィルスエンジンで検出
 ### 0.1.3 (2026/10/24)
 
 - pillowのバージョンを13.0.0に更新
+
+### 0.2.0 (2026/10/28)
+
+- Pythonのバージョンを3.14.10に更新
+- PyInstallerのバージョンを6.22.3に更新
+- pywin32のバージョンを312に更新
+- EXEのプロパティにバージョン情報と著作権情報を追加
+- アプリケーションの起動・終了と例外を記録するログ機能を追加
+- アプリケーション実行中、クリップボード監視スレッド、Tkinterコールバックの例外処理を追加
+- ウィンドウ幅に合わせてUI部品が均等に配置されるようレイアウトを調整

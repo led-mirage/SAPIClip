@@ -8,13 +8,16 @@
 
 import os, argparse
 
+from app_logging import get_logger, setup_logging
 from settings import Settings
 
 APP_NAME = "SAPIClip"
-APP_VERSION = "0.1.3"
+APP_VERSION = "0.2.0"
 COPYRIGHT = "Copyright 2025-2026 led-mirage"
 
 SETTING_FILE = "settings.json"
+
+logger = get_logger("application")
 
 class Application:
     # コンストラクタ
@@ -61,6 +64,27 @@ class Application:
         print(f"")
 
 if __name__ == "__main__":
-    from application import Application
-    app = Application()
-    app.start()
+    log_file_path = setup_logging()
+
+    if log_file_path is not None:
+        logger.info("SAPIClip %s started", APP_VERSION)
+
+    try:
+        app = Application()
+        app.start()
+    except Exception as err:
+        logger.exception("Application failed")
+
+        message = (
+            "An unexpected error occurred while the application was running.\n\n"
+            f"{type(err).__name__}: {err}"
+        )
+        try:
+            from ctypes import windll
+            windll.user32.MessageBoxW(None, message, APP_NAME, 0x10)
+        except Exception:
+            pass
+
+        raise SystemExit(1)
+    else:
+        logger.info("SAPIClip %s stopped normally", APP_VERSION)
